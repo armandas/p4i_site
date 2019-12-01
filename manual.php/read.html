@@ -1,0 +1,498 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+    "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Programavimas pradedantiesiems</title>
+<style type="text/css">
+body {
+    font-family: sans-serif;
+    font-size: 14px;
+}
+h2 {
+    margin-top: 3em;
+}
+table {
+    border-top: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-spacing: 0;
+}
+td {
+    padding: 4px 8px 4px 8px;
+    border-bottom: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+}
+h2 a, h2 a:visited, h3 a, h3 a:visited {
+    text-decoration: none;
+    color: #000;
+}
+abbr {
+    cursor: help;
+}
+
+.contents {
+    list-style: none;
+}
+
+
+.code {
+    font-family: "Courier New", Monospace;
+    font-size: 12px;
+    background: #ddd;
+}
+.source {
+    font-family: "Courier New", Monospace;
+    font-size: 12px;
+    background: #eee;
+    border: 1px dashed #ccc;
+    margin: 20px;
+    padding: 10px;
+}
+.note {
+    background: url(data:image/png;base64,R0lGODlhEAAQAMZ1AC40OBU9XBY9XCc7Sx4+VkFBQShIYS5MZCFYgzxUZx9bixtcjyFcix1djyNejSBgkiZgjjxddilhjEVcbidikERdcUJgd05nfFplbkJqiVRoeSVxrWBobl5seCJ5vD10nyJ6vlByjSt5uG1tbS95tV1yg3FxcTZ8tWR0gSeByV16kCeK1ymK2Gx+i3Z/himP4CqP3imQ4YCAgFyHpy2Q3iyR4W6FmWaHoXyEi3OGlVeNuHaIlnmIlT6b5F6ZyFuazIWUn4qUm0qh5Y2VnICZrWyhy5eam1up6Fyp5pueoWyo1p+fn22s3Y+nu6enp5OtwXW053S366qtsHq46a+vr3q567W3ube4uL6/wLzBxb/DxcPExM7P0LzW69HT1NTU1NnZ2cLf9tzd3t3e3uHh4eLi49Ln+OTl5eXl5ubm5ufo6Onp6e7u7vLy8vPz8/X19ff39/z8/P39/f7+/v///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAEKAH8ALAAAAAAQABAAAAeWgHSCgmMoFhc8WW2DjIJJRVNQPx9AaY2DUjpVUUI0JDlql3RiBz5INTErDkOiViEZJzAvIAsJl3IuXUoUEBsNDxWNcmstZkcsDAQlO1qNRhw2YT0eAR1lbnKNGk83TCkCGGSidEFNRBIKA1tz42c4MyIIBlfjdG8jACoRE1j1YAVL0HDxAqceFRNs6jGS8UUhIydxHAYCADs=) no-repeat 12px 20px;
+    padding: 20px 20px 20px 38px;
+    margin: 20px;
+    border: 1px dashed #ccc;
+}
+
+#infobar {
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 18px;
+    line-height: 16px;
+    font-family: Tahoma;
+    font-size: 12px;
+    text-decoration: none;
+    color: black;
+    background-color: #ffc;
+    border: 1px solid #ffcc00;
+    text-align: right;
+    padding: 2px;
+}
+#infobar span {
+    float: left;
+}
+#infobar a, #infobar a:visited {
+    color: blue;
+}
+</style>
+  </head>
+<body>
+<div id="infobar"><span>&nbsp;Šį failą jau perskaitė: 38681.</span> <a href="http://www.p4i.lt/manual.php/get.zip">Atsisiųsti</a>.</div>
+
+<h1>Programavimas pradedantiesiems (III-ias leidimas)</h1>
+<p>Šis įvadas yra skirtas žmonėms, kurie nėra susidūrę su programavimu, tačiau norėtų pradėti. Jis taip pat tinka ir tiems, kurie jau yra pradėję programuoti, tačiau dar neturi teorinių, o tuo labiau praktinių žinių. Čia trumpai pateikiama informacija apie programavimą bendrai ir nesigilinant į konkrečias kalbas.</p>
+<p>Įvado autorius: Armandas Jarušauskas. Dokumentas platinamas tokiomis pačiomis <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">sąlygomis</a>, kaip ir kitas <a href="http://www.p4i.lt">P4I.lt</a> turinys.</p>
+<p><strong>Keitimų istorija</strong></p>
+<p>Paskutinis atnaujinimas: 2009-01-29. Dėkui <a href="http://rtfb.gamedev.lt/">rtfb</a> už pastabas.<br>
+Įvadas parašytas: 2008-01-10.</p>
+
+<h2>Turinys</h2>
+<ul class="contents">
+    <li><a href="read#1">1. Sąvokos</a></li>
+    <li><a href="read#2">2. Programavimo kalbos</a></li>
+    <li>
+        <a href="read#3">3. Kalbos dalys</a>
+        <ul class="contents">
+            <li><a href="read#3.1">3.1. Pradžia</a></li>
+            <li><a href="read#3.2">3.2. Kintamieji</a></li>
+            <li><a href="read#3.3">3.3. Konstrantos</a></li>
+            <li><a href="read#3.4">3.4. Masyvai</a></li>
+            <li><a href="read#3.5">3.5. Operatoriai</a></li>
+            <li><a href="read#3.6">3.6. Sąlygos sakiniai</a></li>
+            <li><a href="read#3.7">3.7. Ciklai</a></li>
+            <li><a href="read#3.8">3.8. Funkcijos</a></li>
+        </ul>
+    </li>
+    <li><a href="read#4">4. Duomenų tipai</a></li>
+    <li><a href="read#5">5. Kultūra</a></li>
+    <li><a href="read#6">6. Baigiamasis žodis</a></li>
+</ul>
+
+
+<h2><a name="1">1. Sąvokos</a></h2>
+<p><strong>Programavimas</strong> – procesas, kurio metu rašomas, testuojamas, taisomas programinis kodas.</p>
+<p><strong>Programinis kodas</strong> – taisyklių, nurodančių ką turi daryti kompiuteris, rinkinys, parašytas kokia nors programavimo kalba. Dažnai – išeities kodas (source code). </p>
+<p><strong>Programavimo kalba</strong> – dirbtinė kalba, sukurta (palengvinti) žmogaus ir kompiuterio bendravimui. </p>
+<p><strong>Kintamasis</strong> – nuoroda į atminties vietą su tam tikra informacija. Kartais keletas kintamųjų gali rodyti į tą pačia atminties vietą.</p>
+<p><strong>Konstanta</strong> – kaip ir kintamasis, konstanta yra vieta atmintyje. Skirtumas yra tas, jog kai konstanta yra aprašoma, jos pakeisti nebegalima.</p>
+<p><strong>Operatorius</strong> – kalbos dalis, atliekanti tam tikras aritmetines, lyginamąsias ar logines funkcijas.</p>
+<p><strong>Ciklas</strong> – kalbos dalis skirta atlikti tam tikrų veiksmų pakartojimus.</p>
+<p><strong>Masyvas</strong> – dar vienas informacijos laikymo būdas. Nuo kintamųjų skiriasi tuo, jog gali laikyti daug reikšmių vienu metu.</p>
+<p><strong>Funkcija</strong> – kodo dalis, atliekanti aprašytus veiksmus ir turinti adresą/vardą, kas leidžia ją naudoti daug kartų, neperrašant kodo.</p>
+
+<h2><a name="2">2. Programavimo kalbos</a></h2>
+<p>Žmonės yra sukūrę galybę programavimo kalbų, kurios naudojamos skirtingose situacijose. Peržvelkime keletą savybių, kurias gali turėti kalba. </p>
+<ul>
+    <li><strong>Kompiliuojama kalba</strong> – reiškia, kad iš parašyto programinio kodo bus sukurtas failas, kurį kompiuteris vykdys. Pvz.: .exe failai windows sistemose yra sukompiliuoti iš kodo.<br>
+        Pavyzdžiai:
+        <ul>
+            <li>C/C++</li>
+            <li>Delphi/Pascal</li>
+        </ul>
+    </li>
+    <li><strong>Interpretuojama kalba</strong> – programinį kodą analizuoja speciali programa – interpretatorius. Jis nesukuria vykdomojo failo, o perduoda instrukcijas kompiuteriui tiesiogiai.<br>
+        Pavyzdžiai:
+        <ul>
+            <li>PHP</li>
+            <li>Python</li>
+        </ul>
+    </li>
+</ul>
+<p class="note">Kartais, norint pagreitinti programų darbą ar sutaupyti resursų, yra kompiliuojamos ir tos kalbos, kurios paprastai būna tik interpretuojamos.</p>
+
+<ul>
+    <li><strong>Aukšto lygio</strong> (High level) – kalba sukurta taip, kad palengvintų darbą programuotojui. Dažnai lengviau užrašoma, skaitoma, bet sunkiau išmokstama, bei neprilygsta greičiu žemo lygio kalboms. "Aukštas lygis" nereiškia, kad kalba geresnė už žemo lygio programavimo kalbas.</li>
+    <li><strong>Žemo lygio</strong> (Low level) – programuojama beveik mašininiu arba mašininiu kodu, kurį kompiuteris gali suprasti tiesiogiai, be kompiliatorių ar interpretatorių. Greičiau išmokstama, bei vykdoma, tačiau kodas rašomas lėčiau.</li>
+</ul>
+<p class="note">Kalbos lygiai yra reliatyvūs, pvz.: C yra žemo lygio kalba, lyginant su PHP, bet aukšto lygio, lyginant su Assembly.</p>
+
+<ul>
+    <li><strong>Griežtai tipizuotos</strong> (Strongly typed) – kalbos, kurios turi griežtas taisykles duomenų tipų atžvilgiu. Jūs negalite naudoti <span class="code">str</span> vietoj <span class="code">int</span> arba jų sulyginti, prieš tai neatlikę konvertavimo.<br>
+        Pavyzdžiai:
+        <ul>
+            <li>Java</li>
+            <li>Python</li>
+        </ul>
+    </li>
+    <li><strong>Laisvai tipizuotos</strong> (Weakly typed) – kalbos, kurios gali automatiškai konvertuoti duomenų tipus pagal tai, kaip jie naudojami.<br>
+        Pavyzdžiai:
+        <ul>
+            <li>PHP</li>
+            <li>JavaScript</li>
+        </ul>
+    </li>
+</ul>
+<p class="note">Priešingai, nei mano daugelis pradedančiųjų, JavaScript nėra niekaip susijusi su Java. Tai dvi skirtingos, nepriklausomos kalbos.</p>
+<ul>
+    <li><strong>Statiškai tipizuotos</strong> (Statically typed) - Reikalauja apibrėžti kintamuosius ir duomenų tipus prieš pradedant juos naudoti.<br>
+        Pavyzdžiai:
+        <ul>
+            <li>C/C++</li>
+            <li>Java</li>
+        </ul>
+    </li>
+    <li><strong>Dinamiškai tipizuotos</strong> (Dinamically typed) - Kintamieji ir duomenų tipai nustatomi vykdymo metu.<br>
+        Pavyzdžiai:
+        <ul>
+            <li>PHP</li>
+            <li>Python</li>
+        </ul>
+    </li>
+</ul>
+
+<h2><a name="3">3. Kalbos dalys</a></h2>
+<h3><a name="3.1">3.1. Pradžia</a></h3>
+<p>Pradedant programą, kartais reikia pranešti kompiuteriui, kur prasideda kodas.<br>Pavyzdžiai:</p>
+<ul>
+    <li>PHP – turi atidarymo <span class="code">&lt;?php</span> ir uždarymo <span class="code">?&gt;</span> žymas.</li>
+    <li>Pascal – turi raktažodį <span class="code">program</span>.</li>
+</ul>
+<p class="note">Kartais vykdoma viskas, kas yra faile, o programa atskiriama pagal plėtinį.</p>
+
+<h3><a name="3.2">3.2. Kintamieji</a></h3>
+<p>Ko gero svarbiausia kiekvienos kalbos dalis. Kintamuosius galima įsivaizduoti kaip vietą atmintyje. Galite į juos įrašyti informaciją, o reikalui esant ją keisti/trinti. Priklausomai nuo kalbos savybių, kintamųjų sukūrimui/naudojimui gali būti taikomos tam tikros taisyklės. Pavyzdžiui su C++ sukuriant kintamąjį būtina nurodyti duomenų tipą <span class="code">int i = 3</span> šiuo atveju duomenų tipas yra "int". Tuo tarpu PHP kalboje, tipas nustatomas automatiškai. Plačiau duomenų tipus apžvelgsime kitame skyriuje.</p>
+<p>Dar vienas dalykas, kuris skiriasi – duomenų tipo keitimas. PHP kalboje galima laisvai keisti duomenų tipą, pvz.: sudedant du skaičius, kurių vienas yra <span class="code">int</span> tipo, o kitas <span class="code">str</span>, gausime jų sumą, kurios tipas bus <span class="code">int</span>. C++ kalboje toks veiksmas reikštų klaidą.</p>
+
+<h3><a name="3.3">3.3. Konstantos</a></h3>
+<p>Konstantos, panašiai kaip ir kintamieji yra atminties vieta, tačiau konstantų reikšmės programoje keisti negalima. Konstantos dažniausiai naudojamos įvairiems nustatymams saugoti, jos išsiskiria iš bendro kodo, todėl gali palengvinti skaitomumą.</p>
+
+<h3><a name="3.4">3.4. Masyvai</a></h3>
+<p>Masyvus galite prilyginti kintamiesiems, tik skirtumas tas, kad masyvai savyje laiko kitus kintamuosius, o šie gali laikyti dar kitus ir t.t. Kintamieji, laikomi masyve, vadinami masyvo elementais. Paprastą masyvą galite įsivaizduoti kaip lentelę – <span class="code">a</span>:</p>
+<table>
+    <tr>
+        <td>Masyvo elementas</td>
+        <td>0</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+    </tr>
+    <tr>
+        <td>Reikšmė</td>
+        <td>a</td>
+        <td>b</td>
+        <td>c</td>
+        <td>d</td>
+    </tr>
+</table>
+<p><strong>Naudojimas</strong>:</p>
+<ul>
+    <li>a – reikšmė – masyvas su keturiais elementais (nulinis, pirmas, antras ir trečias).</li>
+    <li>a[0] – reikšmė – "a"</li>
+    <li>a[2] – reikšmė – "c"</li>
+</ul>
+
+<p>Dvimatis masyvas gaunamas, jei masyvo elementas yra kitas masyvas (kaip gaunamas trimatis masyvas turbūt pasakoti nereikia). Pavyzdys – lentelė <span class="code">b</span>:</p>
+<table>
+    <tr>
+        <td>Pirmas elementas</td>
+        <td colspan="3">0</td>
+        <td colspan="3">1</td>
+    </tr>
+    <tr>
+        <td>Antras elementas</td>
+        <td>0</td>
+        <td>1</td>
+        <td>2</td>
+        <td>0</td>
+        <td>1</td>
+        <td>2</td>
+    </tr>
+    <tr>
+        <td>Reikšmė</td>
+        <td>a</td>
+        <td>b</td>
+        <td>c</td>
+        <td>d</td>
+        <td>e</td>
+        <td>f</td>
+    </tr>
+</table>
+<p><strong>Naudojimas</strong>:</p>
+<ul>
+    <li>b – reikšmė – masyvas su dviem elementais (nulinis ir pirmas).</li>
+    <li>b[0] – reikšmė – masyvas su trimis elementais (nulinis, pirmas, antras).</li>
+    <li>b[0][0] – reikšmė – "a"</li>
+</ul>
+<p class="note">Turbūt, pastebėjote, jog pirmas numeruoto masyvo narys - nulis. Dauguma programavimo kalbų naudoja zero-based masyvus.</p>
+<p class="note">Skirtingos kalbos gali naudoti skirtingus terminus apibūdinti tas pačias duomenų struktūras. Haskell, Python kalbose masyvus atitinka sąrašai (lists). Daugiau apie šias ir panašias struktūras sužinosite jau programuodami.</p>
+
+<h3><a name="3.5">3.5. Operatoriai</a></h3>
+<p>Operatoriai gali būti loginiai, aritmetiniai, lyginamieji. Jie dažniausiai (tiesiogiai arba ne) naudojami sąlygos sakiniuose. Loginiai operatoriai (Boolean) yra skirti atlikti loginius veiksmus. Dažniausiai pasitaikantys yra šie:</p>
+<ul>
+    <li><span class="code">OR</span> (kartais <span class="code">||</span> (du pipe simboliai)). Jei nors viena iš tikrinamų reikšmių – <span class="code">true</span>, rezultatas – <span class="code">true</span>.</li>
+    <li><span class="code">AND</span> (kartais <span class="code">&amp;&amp;</span> (du ampersandai)). Rezultatas <span class="code">true</span> tik tuomet, kai visos tikrinamos reikšmės – <span class="code">true</span>.</li>
+    <li><span class="code">NOT</span> (kartais <span class="code">!</span> (vienas šauktukas)). Kartais vadinamas <em>inverteriu</em>. Pažiūrėję teisybių lentelę suprasit kodėl.</li>
+</ul>
+<p><strong>Teisingumo lentelės</strong>:<p>
+<table>
+    <tr>
+        <td>Pirma reikšmė</td>
+        <td>Operatorius</td>
+        <td>Antra reikšmė</td>
+        <td>Rezultatas</td>
+    </tr>
+    <tr>
+        <td>0</td>
+        <td>AND</td>
+        <td>0</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>0</td>
+        <td>AND</td>
+        <td>1</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>AND</td>
+        <td>0</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>AND</td>
+        <td>1</td>
+        <td>1</td>
+    </tr>
+</table>
+<p></p>
+<table>
+    <tr>
+        <td>Pirma reikšmė</td>
+        <td>Operatorius</td>
+        <td>Antra reikšmė</td>
+        <td>Rezultatas</td>
+    </tr>
+    <tr>
+        <td>0</td>
+        <td>OR</td>
+        <td>0</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>0</td>
+        <td>OR</td>
+        <td>1</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>OR</td>
+        <td>0</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>OR</td>
+        <td>1</td>
+        <td>1</td>
+    </tr>
+</table>
+<p></p>
+<table>
+    <tr>
+        <td>Reikšmė</td>
+        <td>Operatorius</td>
+        <td>Rezultatas</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>NOT</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>0</td>
+        <td>NOT</td>
+        <td>1</td>
+    </tr>
+</table>
+<p class="note">Daugelyje kalbų, <span class="code">false</span> laikoma viskas, kas neturi reikšmės, arba nėra nustatyta. Taigi, galime rašyti <span class="code">if (vardas)</span>, kad patikrintumėm ar kintamasis <span class="code">vardas</span> turi reikšmę.</p>
+
+<p>Aritmetiniai operatoriai yra skirti matematiniams veiksmams.<p>
+<ul>
+    <li><span class="code">+</span> – Sumos simbolis.</li>
+    <li><span class="code">-</span> – Atimties simbolis.</li>
+    <li><span class="code">*</span> – Daugybos simbolis.</li>
+    <li><span class="code">/</span> – Dalybos simbolis.</li>
+</ul>
+
+<p>Lyginamieji operatoriai yra skirti reikšmėms sulyginti.</p>
+<ul>
+    <li><span class="code">==</span> – Lygu (Priklausomai nuo kalbos, gali būti vienas lygybės ženklas, bet dažniausiai <span class="code">=</span> yra reikšmės priskyrimo simbolis).</li>
+    <li><span class="code">&gt;</span> – Daugiau negu.</li>
+    <li><span class="code">&lt;</span> – Mažiau negu.</li>
+    <li><span class="code">&gt;=</span> – Daugiau arba lygu. (Ženklų eilės tvarka – svarbi).</li>
+    <li><span class="code">&lt;=</span> – Mažiau arba lygu. (Ženklų eilės tvarka – svarbi).</li>
+    <li><span class="code">!=</span> – Nelygu. (Atkreipkite dėmesį, jog tai operatorių <span class="code">NOT</span> ir <span class="code">==</span> derinys). Nelygybės tikrinimui kai kurios kalbos gali naudoti <span class="code">&lt;&gt;</span> derinį.</li>
+</ul>
+
+<h3><a name="3.6">3.6. Sąlygos sakiniai</a></h3>
+<p>Tai taip pat labai svarbi kalbos konstrukcija. Pavadinimas turėtų kalbėti už save, todėl labai neišsiplėsime. Trys pagrindinės sąlygos sakinio dalys:</p>
+<ul>
+    <li><span class="code">if (salyga)</span> – vykdoma, jei "sąlyga" patenkinama.</li>
+    <li><span class="code">elseif (kita salyga)</span> – vykdoma, jei ankstesnė "sąlyga" nepatenkinama, bet patenkinama "kita sąlyga".</li>
+    <li><span class="code">else</span> – tai kas vykdoma nepatenkinus visų ankstesnių sąlygų.</li>
+</ul>
+<p class="note">
+&bull; Sąlyginei konstrukcijai reikalingas bent vienas <span class="code">if</span> blokas.<br>
+&bull; Sąlyginė konstrukcija gali turėti bet kiek <span class="code">elseif</span> blokų (taip pat nulį).<br>
+&bull; <span class="code">else</span> blokas gali būti vienas, arba gali jo nebūti išvis.<br>
+&bull; jei konstrukcija sudaryta iš kelių paeiliui einančių <span class="code">if</span> sakinių (žr. kodą žemiau.) – jie yra vienas nuo kito nepriklausomi. Tai gali atrodyti savaime suprantama, bet pradedantieji, šioje vietoje, yra linkę daryti, nors ir ne kritines, bet logines klaidas. Todėl, jei tikitės, kad bus patenkinta sąlyga1 <strong>arba</strong> sąlyga2, <strong>bet ne abi</strong>, naudokite <span class="code">if..elseif</span> konstrukciją.
+</p>
+<pre class="source">
+if (salyga1) { veiksmas }
+if (salyga2) { veiksmas }
+</pre>
+
+<h3><a name="3.7">3.7. Ciklai</a></h3>
+<p>Ciklai (iterations, loops) yra naudojami veiksmų kartojimui atlikti. Ciklai gali būti žinomo arba nežinomo kartojimų skaičiaus. Pagrindiniai du ciklai:<p>
+<ul>
+    <li><span class="code">for (i = 0; i &lt; 10; i++)</span> – reikalingi 3 parametrai:
+        <ol>
+            <li>reikšmė, nuo kurios ciklas pradedamas</li>
+            <li>maksimali reikšmė. Šiuo atveju ciklas bus kartojamas, kol <span class="code">i</span> mažiau už 10. Galima pakeisti loginį operatorių į <span class="code">i &lt;= 10</span>, tuomet ciklas bus kartojamas, iki <span class="code">i</span> bus lygu 10.</li>
+            <li>pokytis. Šiuo atveju kintamasis bus padidintas vienetu, kiekvieno ciklo metu. Galima nurodyti įvairiausius pokyčius, pvz.: <span class="code">i--</span> (kintamasis mažinamas vienetu), <span class="code">i = i*i</span> (kintamasis keliamas kvadratu) ir t.t.</li>
+        </ol>
+    </li>
+    <li><span class="code">while (a &lt; b)</span> – reikalingas vienas parametras nusprendžiantis, kada ciklas turi būti baigiamas. Šiuo atveju ciklas kartojamas, kol <span class="code">a</span> mažiau už <span class="code">b</span>. Ciklo viduje turi būti atliekami veiksmai su bent vienu iš kintamųjų, tam, kad nebūtų sukurtas "amžinas ciklas".</li>
+</ul>
+
+<h3><a name="3.8">3.8. Funkcijos</a></h3>
+<p>Funkcijos programavime naudojamos, kai reikia išskirti tam tikrus kodo gabalus, kurie gali būti dažniau naudojami programoje. Jos ne tik sutrumpina kodą, bet ir padaro jį suprantamesnį.</p>
+<p>Funkcijos pavyzdys PHP kalba:</p>
+<pre class="source">
+function pasisveikinam($vardas)
+{
+    $val = date("H");
+
+    if ($val &lt; 12)
+        echo "Labas rytas, $vardas!";
+    elseif ($val &lt; 18)
+        echo "Laba diena, $vardas!";
+    else
+        echo "Labas vakaras, $vardas!";
+}
+</pre>
+<p>Dabar šią funkciją galima naudoti įvairiose programos vietose, neperrašinėjant kodo:</p>
+<pre class="source">
+$draugas = 'Jonas';
+
+pasisveikinam($draugas); // pasisveikinsim su Jonu
+pasisveikinam('Petras'); // pasisveikinsim su Petru
+</pre>
+
+<h2><a name="4">4. Duomenų tipai</a></h2>
+<p>Duomenų tipai yra labai svarbūs programavime, kadangi yra taisyklės, kurios apsprendžia kokius veiksmus galima atlikti su kiekvienu duomenų tipu. Čia pateikiami keletas dažniausiai pasitaikančių duomenų tipų. Priklausomai nuo kalbos, gali skirtis jų pavadinimai, bet esmė dažniausiai ta pati. Su duomenų tipais, kurie čia neaprašyti, susipažinsite jau programuodami savo pasirinkta kalba.</p>
+<p>Pradedantiesiems svarbu žinoti, kad su kiekvienu duomenų tipu galima atlikti įvairiausius veiksmus (trumpą sąrašą rasite prie duomenų tipų aprašymų) ir tam nereikia ypatingų žinių. Dažnai programavimo kalbos tam turi iš anksto aprašytas funkcijas. Viskas ko jums reikia – žinoti ko norite ir mokėti naudotis paieškos sistemomis.</p>
+<p><strong>Pavyzdys</strong>: žodis prasideda mažąja raide, o mes norime padaryti, kad prasidėtų didžiąja. Programuojame Java kalba. Atsidarome naršyklę, surenkame paieškos sistemos adresą (pvz.: google.lt) ir į laukelį įvedame <span class="code">string upper case java</span>. Atsakymo nereikėjo ieškoti ilgai. Antras rezultatas siūlo naudoti metodą <span class="code">toUpperCase()</span>. Štai jums ir atsakymas.</p>
+<p>Dabar apie duomenų tipus:</p>
+<ul>
+    <li>Simbolis (character) – šis duomenų tipas skirtas saugoti vienam simboliui. Simbolis gali būti raidė, skaičius, ženklas (skyrybos, aritmetinis ir t.t.). Šis tipas taip pat gali saugoti ir kontrolinius simbolius, kaip naujos eilutės simbolis, tabuliacijos simbolis ir kt.</li>
+    <li>
+        Simbolių eilutė (string) – gali saugoti “daug” simbolių. Priklausomai nuo kalbos, eilutėms gali būti taikomi ilgio limitai, taip pat nustačius vieną reikšmę, vėliau gali būti neįmanoma jos pakeisti ilgesne. Dauguma modernių programavimo kalbų šių apribojimų neturi.<br>
+        Keletas veiksmų, kuriuos galite atlikti:<br>
+        <ul>
+            <li>tam tikrų dalių (raidžių, simbolių, žodžių) eilutėje paieška ir/arba pakeitimas;</li>
+            <li>eilutės skaidymas (į eilutes, masyvo elementus);</li>
+            <li>eilutės ilgio nustatymas;</li>
+        </ul>
+    </li>
+    <li>Sveikasis skaičius (integer) – Saugo sveikuosius skaičius, priklausomai nuo ilgio limitų, gali būti vadinamas byte, word ir kt.<br>
+        Veiksmai:<br>
+        <ul>
+            <li>didžioji dalis matematinių veiksmų gali būti atlikta nerašant savo algoritmų. Pvz.: šaknies traukimas, kėlimas laipsniu, liekanos radimas, trigonometriniai veiksmai ir t.t.</li>
+        </ul>
+    </li>
+    <li>Skaičius su kableliu (float) – pavadinimas reiškia floating point number, tad kablelį teks keisti tašku. Dydis ir tikslumas taip pat turi limitus.<br>
+        Veiksmai:<br>
+        <ul>
+            <li>dauguma veiksmų tie patys kaip ir sveikųjų skaičių, bet papildomai galima apvalinti, pasiimti tik sveikąją dalį.</li>
+        </ul>
+    </li>
+    <li>Loginis (Boolean) – šis duomenų tipas gali turėti tik dvi reikšmes: teisingą (true arba 1) arba neteisingą (false arba 0).</li>
+</ul>
+<p class="note">Duomenų tipus dažnai galima konvertuoti į kitus, pvz.: integer į string ir atvirkščiai, array į string ir atvirkščiai ir taip toliau.</p>
+
+<h2><a name="5">5. Kultūra</a></h2>
+<p>Programavime yra nerašytos taisyklės, kurios nusako kaip derėtų rašyti programinį kodą, kad jį suprastų ir kolegos programuotojai.</p>
+<p>Dažnai rašymo stilių lemia ir pati programavimo kalba. Paimkime funkcijų pavadinimus, kaip pavizdį:</p>
+<ul>
+    <li>Java: <span class="code">manoSuperFunkcija()</span> – letter-case separated. Žodžiai atskiriami didžiosiomis raidėmis.</li>
+    <li>Python: <span class="code">mano_super_funkcija()</span> – delimiter separated. Žodžiai atskiriami ženklais (pvz. žemu brūkšniu).</li>
+    <li>PHP: neapibrėžta. PHP turi daug skirtingai pavadintų funkcijų, pvz.: <span class="code">strpos()</span> ir <span class="code">str_split()</span>, dėl ko yra neretai kritikuojama.</li>
+</ul>
+<p>Nors pavadinimų išvaizdą gali įtakoti kalba, tačiau pačius pavadinimus turi kurti žmonės. Jau nuo pat pradžių reikia mokytis prasmingai įvardinti funkcijas ir kintamuosius, naudoti atitraukimus, tarpus, naujas eilutes.</p>
+<p>Geras pavyzdys:</p>
+<pre class="source">
+function kelimas_kvadratu(skaicius)
+{
+    return skaicius * skaicius;
+}
+</pre>
+
+<p>Blogas pavyzdys:</p>
+<pre class="source">
+function k(s){return s*s;}
+</pre>
+<p>Kol kodas yra nesudėtingas, tai neatrodo baisiai, tačiau kai programos išauga, susigaudyti tampa labai sunku. Kartais gali nepadėti ir prasmingi vardai, todėl reikia stengtis komentuoti kodą. Komentarai, kas be ko, turėtų būti prasmingi.</p>
+<p>Geras pavyzdys:</p>
+<pre class="source">
+// si skaiciu kelsime kvadratu
+skaicius = 3;
+</pre>
+
+<p>Blogas pavyzdys:</p>
+<pre class="source">
+// skaicius
+s = 3;
+</pre>
+<p class="note">Verta paskaityti: <a href="http://bhb.linija.net/gonix/coding_standards/">Kodo standartai</a>.</p>
+
+<h2><a name="6">6. Baigiamasis žodis</a></h2>
+<p>Daugumą čia neaprašytų dalykų sužinosite jau programuodami savo pasirinkta kalba. Nebūtinai viskas, ką čia radote, tiks jūsų atvejui, tačiau bendros žinios – naudingos. Dabar jūsų eilė. Skaitykite knygas, dalyvaukite forumuose ir svarbiausia <strong>praktikuokitės</strong>.</p>
+</body>
+</html>
